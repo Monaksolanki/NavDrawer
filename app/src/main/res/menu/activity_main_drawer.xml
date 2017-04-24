@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home"
+            android:icon="@drawable/home"
+            android:title="Home" />
+        <item
+            android:id="@+id/profile"
+            android:icon="@drawable/user"
+            android:title="My Profile" />
+
+        <item
+            android:id="@+id/history"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="History" />
+
+    </group>
+
+    <item android:title="Your Test">
+        <menu>
+            <item
+                android:id="@+id/measure"
+                android:icon="@drawable/ic_menu_slideshow"
+                android:title="Measure" />
+            <item
+                android:id="@+id/readings"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Readings" />
+
+            <item
+                android:id="@+id/logout"
+                android:icon="@drawable/ic_menu_manage"
+                android:title="Log Out" />
+            <!--<item-->
+                <!--android:id="@+id/nav_share"-->
+                <!--android:icon="@drawable/ic_menu_share"-->
+                <!--android:title="Share" />-->
+            <!--<item-->
+                <!--android:id="@+id/nav_send"-->
+                <!--android:icon="@drawable/ic_menu_send"-->
+                <!--android:title="Send" />-->
+        </menu>
+    </item>
+
+</menu>
