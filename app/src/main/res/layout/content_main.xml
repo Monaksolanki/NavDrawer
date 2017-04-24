@@ -14,4 +14,12 @@
     android:background="@drawable/image"
     android:id="@+id/relativeLayout_for_fragment">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="New Text"
+        android:id="@+id/firstpagename"
+        android:layout_marginTop="172dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

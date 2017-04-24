@@ -13,19 +13,37 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,ReadingFragment.OnFragmentInteractionListener {
+
+TextView username;
+    SessionManager session;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        session = new SessionManager(getApplicationContext());
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        session.checkLogin();
+        HashMap<String,String> user=session.getUserDetails();
+        String name=user.get(SessionManager.KEY_AADHAR);
+       // setContentView(R.layout.nav_header_main)
+        //username= (TextView) findViewById(R.id.name);
+        //username.setText(name);
 
+
+        NavigationView navigation= (NavigationView) findViewById(R.id.header);
+        navigation.setNavigationItemSelectedListener(this);
+        TextView profilename= (TextView) navigation.getHeaderView(0).findViewById(R.id.name);
+        profilename.setText(name);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -45,11 +63,14 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        HomeFragment HomeFragment=new HomeFragment();
-        FragmentManager manager=getSupportFragmentManager();
-        manager.beginTransaction().replace(R.id.relativeLayout_for_fragment,HomeFragment,
-                HomeFragment.getTag()).commit();
+//        HomeFragment HomeFragment=new HomeFragment();
+//        FragmentManager manager=getSupportFragmentManager();
+//        manager.beginTransaction().replace(R.id.relativeLayout_for_fragment,HomeFragment,
+//                HomeFragment.getTag()).commit();
     }
+
+
+
 
     @Override
     public void onBackPressed() {
