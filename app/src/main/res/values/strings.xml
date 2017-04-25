@@ -23,4 +23,37 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
+    <string name="title_activity_register">RegisterActivity</string>
+
+
+    <string-array name="bloodgroup">
+
+        <item>Select one</item>
+        <item>AB+ve</item>
+        <item>AB-ve</item>
+        <item>A+ve</item>
+        <item>A-ve</item>
+        <item>B+ve</item>
+        <item>B-ve</item>
+        <item>O+ve</item>
+        <item>O-ve</item>
+
+    </string-array>
+    <string-array name="list">
+        <item>"un":+</item>
+
+
+    </string-array>
+
+
+    <string-array name="doctor_list">
+
+        <item>Select one</item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+        <item></item>
+
+    </string-array>
 </resources>

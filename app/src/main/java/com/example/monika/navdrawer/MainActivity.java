@@ -1,5 +1,6 @@
 package com.example.monika.navdrawer;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -36,14 +37,10 @@ TextView username;
         HashMap<String,String> user=session.getUserDetails();
         String name=user.get(SessionManager.KEY_AADHAR);
        // setContentView(R.layout.nav_header_main)
-        //username= (TextView) findViewById(R.id.name);
-        //username.setText(name);
 
 
-        NavigationView navigation= (NavigationView) findViewById(R.id.header);
-        navigation.setNavigationItemSelectedListener(this);
-        TextView profilename= (TextView) navigation.getHeaderView(0).findViewById(R.id.name);
-        profilename.setText(name);
+
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -62,11 +59,16 @@ TextView username;
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        View header=navigationView.getHeaderView(0);
+        username= (TextView)header.findViewById(R.id.name);
+        username.setText(name);
 
-//        HomeFragment HomeFragment=new HomeFragment();
-//        FragmentManager manager=getSupportFragmentManager();
-//        manager.beginTransaction().replace(R.id.relativeLayout_for_fragment,HomeFragment,
-//                HomeFragment.getTag()).commit();
+
+
+        HomeFragment HomeFragment=new HomeFragment();
+        FragmentManager manager=getSupportFragmentManager();
+        manager.beginTransaction().replace(R.id.relativeLayout_for_fragment,HomeFragment,
+                HomeFragment.getTag()).commit();
     }
 
 
@@ -147,7 +149,8 @@ TextView username;
 
 
         } else if (id == R.id.logout) {
-
+               session.logoutUser();
+          //  Intent i=new Intent()
         } else if (id == R.id.measure) {
 
         } else if (id == R.id.readings) {
