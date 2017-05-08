@@ -17,6 +17,7 @@ import android.provider.ContactsContract;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -31,6 +32,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -68,6 +73,9 @@ LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
     private Button mSignInButton, mSignUpButton;
     AlertDialogManager alert = new AlertDialogManager();
 
+    JSONObject name,aadhar,email;
+    JSONArray json_name,json_aadhar,json_email;
+    String loginname, loginemail,loginaadhar;
 
 
     SessionManager session;
@@ -188,7 +196,7 @@ LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
         mPasswordView.setError(null);
 
         // Store values at the time of the login attempt.
-        final String aadhar = mAadhar.getText().toString();
+        final String aadharr = mAadhar.getText().toString();
         final String password = mPasswordView.getText().toString();
 
         boolean cancel = false;
@@ -199,13 +207,13 @@ LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
         adddata = Volley.newRequestQueue(this);
 
         String url = "http://eitraproject.ga/telehealth/patient_login.php?" +
-                "aadhar_id=" + aadhar +
+                "aadhar_id=" + aadharr +
                 "&password=" + password;
 
         final StringRequest pushdata = new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             public void onResponse(String response) {
                 //  Toast.makeText(LoginActivity.this,response,Toast.LENGTH_LONG).show();
-                if (aadhar.trim().length() > 0 && password.trim().length() > 0) {
+                if (aadharr.trim().length() > 0 && password.trim().length() > 0) {
                     // For testing puspose aadhar, password is checked with sample data
                     // aadhar = test
                     // password = test
@@ -218,11 +226,66 @@ LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
 
                     } else {
-                        String name = response;
+
+                        try {
+                            name = new JSONObject(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            email = new JSONObject(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            aadhar = new JSONObject(response);
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+
+                        try {
+                            json_name = name.getJSONArray("name");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            json_email = email.getJSONArray("email");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            json_aadhar = aadhar.getJSONArray("aadhar");
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        //String name = response;
                         // Creating user login session
                         // For testing i am stroing name, email as follow
                         // Use user real data
-                        session.createLoginSession(name);
+                        Log.d("Response: ", response);
+                        try {
+                            Log.d("Response: ", json_name.getString(0));
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                            loginname = json_name.getString(0).toString();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                           loginemail = json_email.getString(0).toString();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        try {
+                           loginaadhar = json_aadhar.getString(0).toString();
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                        }
+                        //session.createLoginSession(loginname,loginemail,loginaadhar);
+                        session.createLoginSession(loginname,loginemail,loginaadhar);
 
                         // Staring MainActivity
                         Intent i = new Intent(getApplicationContext(), MainActivity.class);

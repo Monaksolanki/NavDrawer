@@ -35,6 +35,8 @@ class SessionManager {
     // Email address (make variable public to access from outside)
     public static final String KEY_EMAIL = "email";
 
+    public static final String KEY_NAME = "name";
+
     // Constructor
     public SessionManager(Context context){
         this._context = context;
@@ -45,12 +47,14 @@ class SessionManager {
     /**
      * Create login session
      * */
-    public void createLoginSession(String aadhar){
+    public void createLoginSession(String name, String email,String aadhar){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
 
         // Storing aadhar in pref
         editor.putString(KEY_AADHAR, aadhar);
+        editor.putString(KEY_EMAIL, email);
+        editor.putString(KEY_NAME,name);
 
         // Storing email in pref
         //    editor.putString(KEY_EMAIL, email);
@@ -90,6 +94,8 @@ class SessionManager {
         HashMap<String, String> user = new HashMap<String, String>();
         // user aadhar
         user.put(KEY_AADHAR, pref.getString(KEY_AADHAR, null));
+        user.put(KEY_NAME, pref.getString(KEY_NAME, null));
+        user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));
 
         // user email id
         //  user.put(KEY_EMAIL, pref.getString(KEY_EMAIL, null));

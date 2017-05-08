@@ -1,10 +1,12 @@
 package com.example.monika.navdrawer;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -20,9 +22,14 @@ import android.widget.Toast;
 import java.util.HashMap;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener,ReadingFragment.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+                   MeasureFragment.OnFragmentInteractionListener,
+                   ReadingFragment.OnFragmentInteractionListener,
+                   DeviceListFragment.OnFragmentInteractionListener,
+                    DeviceListAdapterFragment.OnFragmentInteractionListener,
+                    BluetoothFragment.OnFragmentInteractionListener{
 
-TextView username;
+TextView username,emailid;
     SessionManager session;
 
     @Override
@@ -35,7 +42,9 @@ TextView username;
 
         session.checkLogin();
         HashMap<String,String> user=session.getUserDetails();
-        String name=user.get(SessionManager.KEY_AADHAR);
+        String name=user.get(SessionManager.KEY_NAME);
+        String email=user.get(SessionManager.KEY_EMAIL);
+        Toast.makeText(getApplicationContext(),name,Toast.LENGTH_LONG).show();
        // setContentView(R.layout.nav_header_main)
 
 
@@ -61,7 +70,10 @@ TextView username;
         navigationView.setNavigationItemSelectedListener(this);
         View header=navigationView.getHeaderView(0);
         username= (TextView)header.findViewById(R.id.name);
+        emailid = (TextView) header.findViewById(R.id.email);
         username.setText(name);
+        emailid.setText(email);
+
 
 
 
@@ -152,6 +164,12 @@ TextView username;
                session.logoutUser();
           //  Intent i=new Intent()
         } else if (id == R.id.measure) {
+            MeasureFragment measure=MeasureFragment.newInstance("1","2");
+            FragmentManager manager=getSupportFragmentManager();
+            manager.beginTransaction()
+                    //setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out)
+                    .replace(R.id.relativeLayout_for_fragment,measure,
+                            measure.getTag()).commit();
 
         } else if (id == R.id.readings) {
             ReadingFragment reading=ReadingFragment.newInstance(10);
@@ -170,5 +188,10 @@ TextView username;
     @Override
     public void onFragmentInteraction(String data) {
         Toast.makeText(this,data,Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }
