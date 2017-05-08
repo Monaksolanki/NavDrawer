@@ -305,12 +305,23 @@ public class MeasureFragment extends Fragment {
                     showEnabled();
                 }
             } else if (BluetoothAdapter.ACTION_DISCOVERY_STARTED.equals(action)) {
-                //mDeviceList = new ArrayList();
+                mDeviceList = new ArrayList();
 
                 mProgressDlg.show();
             } else if (BluetoothAdapter.ACTION_DISCOVERY_FINISHED.equals(action)) {
                 mProgressDlg.dismiss();
 
+                DeviceListFragment deviceListFragment=new DeviceListFragment();
+                FragmentManager manager=getActivity().getSupportFragmentManager();
+                Bundle bundle = new Bundle();
+                bundle.putStringArrayList("device.list",mDeviceList);
+                deviceListFragment.setArguments(bundle);
+
+
+                manager.beginTransaction().
+                        // setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out).
+                                replace(R.id.relativeLayout_for_fragment,deviceListFragment,
+                                deviceListFragment.getTag()).commit();
 //                Intent newIntent = new Intent(getContext(), DeviceListActivity.class);
 //
 //                newIntent.putParcelableArrayListExtra("device.list", mDeviceList);

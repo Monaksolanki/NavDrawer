@@ -98,7 +98,7 @@ public class DeviceListFragment extends Fragment {
 
 
         final ArrayAdapter adapter = new ArrayAdapter(getContext() ,android.R.layout.simple_list_item_1);
-        //mAdapter		= new DeviceListAdapter(this);
+        //mAdapter		= new DeviceListAdapter(getContext());
         adapter.addAll(mDeviceList);
         //mAdapter.setData(mDeviceList);
 
@@ -125,7 +125,7 @@ public class DeviceListFragment extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 Log.d("IN:","on click item listener");
-                Toast.makeText(getContext(), " ITEM CLICKED POSITION = "+String.valueOf(0), Toast.LENGTH_SHORT).show();
+                //Toast.makeText(getContext(), " ITEM CLICKED POSITION = "+String.valueOf(0), Toast.LENGTH_SHORT).show();
                 String info = ((TextView) view).getText().toString();
                 String address = info.substring(info.length() - 17);
 
@@ -152,24 +152,6 @@ public class DeviceListFragment extends Fragment {
             }
         });
 
-
-//		mListView.setOnItemClickListener(new ListOnItemClickListener() {
-//			@Override
-//			public void onItemClick(AdapterView<?> parent, View view,
-//									int position, long id) {
-//				Log.d("IN:","on click item listener");
-//				Toast.makeText(getApplicationContext(), " ITEM CLICKED POSITION = "+String.valueOf(position), Toast.LENGTH_SHORT).show();
-//				String info = ((TextView) view).getText().toString();
-//				String address = info.substring(info.length() - 17);
-//
-//				// Make an intent to start next activity.
-//				Intent i = new Intent(DeviceListActivity.this, ledControl.class);
-//
-//				//Change the activity.
-//				i.putExtra(EXTRA_ADDRESS, address); //this will be received at ledControl (class) Activity
-//				startActivity(i);
-//			}
-//		}); //Method called when the device from the list is clicked
 
 
         getActivity().registerReceiver(mPairReceiver, new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED));

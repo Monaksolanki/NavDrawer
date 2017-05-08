@@ -9,6 +9,8 @@ import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
+import android.provider.DocumentsContract;
+import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -54,9 +57,10 @@ public class BluetoothFragment extends Fragment {
     SessionManager session;
     HashMap<String,String> user;
     Button calc, upload, btnDis;
+    EditText symptons;
 
     TextView data;
-    String address = null,temperature = null;
+    String address = null,temperature = "32.45";
     private ProgressDialog progress;
     BluetoothAdapter myBluetooth = null;
     BluetoothSocket btSocket = null;
@@ -120,6 +124,7 @@ public class BluetoothFragment extends Fragment {
         upload = (Button) RootView.findViewById(R.id.upload);
         btnDis = (Button)RootView.findViewById(R.id.button4);
         data = (TextView) RootView.findViewById(R.id.received);
+        symptons = (EditText) RootView.findViewById(R.id.symptons);
 
         session = new SessionManager(getContext());
         session.checkLogin();
@@ -190,10 +195,11 @@ public class BluetoothFragment extends Fragment {
         final RequestQueue adddata;
         adddata= Volley.newRequestQueue(getContext());
         String aadhar = user.get(SessionManager.KEY_AADHAR);
+
         String url="http://eitraproject.ga/telehealth/patient_data.php?"+
                 "aadhar_id="+aadhar+
                 "&temp="+temperature+
-                "&symptoms=null"+
+                "&symptoms="+symptons.getText().toString()+
                 "&ecg=0&pulse=0";
 
         //Toast.makeText(getContext(),url,Toast.LENGTH_LONG).show();
