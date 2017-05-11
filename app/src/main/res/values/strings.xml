@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NavDrawer</string>
+    <string name="app_name">TeleHealth</string>
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -23,7 +23,7 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-    <string name="title_activity_register">RegisterActivity</string>
+    <string name="title_activity_register">Register </string>
 
 
     <string-array name="bloodgroup">
@@ -56,4 +56,24 @@
         <item></item>
 
     </string-array>
+
+
+    <string name="hello_world">Hello world!</string>
+
+    <string name="text_bluetooth_off">Bluetooth is Off</string>
+    <string name="text_bluetooth_on">Bluetooth is On</string>
+
+    <string name="text_enable">Enable</string>
+    <string name="text_disable">Disable</string>
+
+    <string name="text_view_paired">Paired Devices</string>
+    <string name="text_scan_devices">Scan Devices</string>
+    <string name="text_stop_scan">Scan Devices</string>
+
+    <string name="text_list_paired_devices">Paired Devices</string>
+    <string name="text_list_devices">List of Devices</string>
+
+    <string name="text_pair">Pair</string>
+    <string name="title_activity_led_control">ledControl</string>
+
 </resources>
