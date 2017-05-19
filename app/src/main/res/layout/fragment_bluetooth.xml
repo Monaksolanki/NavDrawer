@@ -7,20 +7,24 @@
 
     <Button
         android:id="@+id/calc"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CALCULATE"
-        android:layout_marginTop="23dp"
-        android:layout_below="@+id/textView2"
-        android:layout_centerHorizontal="true" />
+        android:layout_below="@+id/symptons"
+        android:layout_alignRight="@+id/upload"
+        android:layout_alignEnd="@+id/upload"
+        android:layout_marginTop="50dp"
+        android:layout_alignParentEnd="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Disconnect"
         android:id="@+id/button4"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
+        android:layout_alignTop="@+id/received"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true" />
 
     <TextView
@@ -38,13 +42,12 @@
         android:id="@+id/upload"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button4"
-        android:layout_alignEnd="@+id/calc"
-        android:layout_alignLeft="@+id/calc"
-        android:layout_alignRight="@+id/calc"
-        android:layout_alignStart="@+id/calc"
-        android:layout_marginBottom="24dp"
-        android:text="upload" />
+        android:text="upload"
+        android:layout_below="@+id/calc"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
 
     <android.support.design.widget.TextInputLayout
         android:layout_width="match_parent"
@@ -62,19 +65,19 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Symptons:"
-        android:layout_below="@+id/textInputLayout"
+        android:layout_marginTop="56dp"
+        android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="25dp" />
+        android:layout_alignParentStart="true" />
 
     <EditText
         android:id="@+id/symptons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
         android:hint="Symptons"
-        android:layout_below="@+id/textInputLayout"
+        android:layout_below="@+id/textView"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp" />
 
 </RelativeLayout>

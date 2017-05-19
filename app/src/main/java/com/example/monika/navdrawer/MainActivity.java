@@ -29,6 +29,8 @@ public class MainActivity extends AppCompatActivity
                     DeviceListAdapterFragment.OnFragmentInteractionListener,
                     BluetoothFragment.OnFragmentInteractionListener{
 
+
+
 TextView username,emailid;
     SessionManager session;
 
@@ -171,15 +173,7 @@ TextView username,emailid;
                     .replace(R.id.relativeLayout_for_fragment,measure,
                             measure.getTag()).commit();
 
-        } else if (id == R.id.readings) {
-            ReadingFragment reading=ReadingFragment.newInstance(10);
-            FragmentManager manager=getSupportFragmentManager();
-            manager.beginTransaction()
-            //setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out)
-                    .replace(R.id.relativeLayout_for_fragment,reading,
-                    reading.getTag()).commit();
         }
-
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;

@@ -1,11 +1,11 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    compileSdkVersion 23
+    buildToolsVersion "23.0.3"
 
     defaultConfig {
-        applicationId "com.example.monika.navdrawer"
+        applicationId "com.example.monika.patient_r"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -21,9 +21,9 @@ android {
 
 dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.android.support:design:23.3.0'
-    compile 'com.android.support:support-v4:25.2.0'
     compile 'com.mcxiaoke.volley:library:1.0.19'
-    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:support-v4:23.3.0'
 }
