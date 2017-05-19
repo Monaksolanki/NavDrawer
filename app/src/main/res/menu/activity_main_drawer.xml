@@ -24,10 +24,7 @@
                 android:id="@+id/measure"
                 android:icon="@drawable/ic_menu_slideshow"
                 android:title="Measure" />
-            <item
-                android:id="@+id/readings"
-                android:icon="@drawable/ic_menu_manage"
-                android:title="Readings" />
+
 
             <item
                 android:id="@+id/logout"
