@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.monika.navdrawer.LoginActivity"
-    android:background="@drawable/im">
+    android:background="@drawable/d">
 
     <!-- Login progress -->
     <ProgressBar
@@ -72,7 +72,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_in"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="#fc96b3c6" />
 
             <Button
                 android:id="@+id/aadhar_sign_up_button"
@@ -81,7 +82,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:text="@string/action_sign_up"
-                android:textStyle="bold" />
+                android:textStyle="bold"
+                android:background="#fc96b3c6" />
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
