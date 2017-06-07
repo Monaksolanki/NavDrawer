@@ -102,7 +102,7 @@ LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
             @Override
             public void onClick(View view) {
 
-//                attemptLogin();
+                attemptLogin();
                 Intent i = new Intent(LoginActivity.this, MainActivity.class);
                 startActivity(i);
             }
