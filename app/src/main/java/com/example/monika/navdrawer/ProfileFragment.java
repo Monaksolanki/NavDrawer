@@ -261,8 +261,8 @@ public class ProfileFragment extends Fragment {
 
                 }
 
-            }
 
+            }
 
         }, new Response.ErrorListener() {
 
