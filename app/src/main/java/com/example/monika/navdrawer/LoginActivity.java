@@ -102,9 +102,9 @@ LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
             @Override
             public void onClick(View view) {
 
-//                attemptLogin();
-                Intent i = new Intent(LoginActivity.this, MainActivity.class);
-                startActivity(i);
+                attemptLogin();
+//                Intent i = new Intent(LoginActivity.this, MainActivity.class);
+//                startActivity(i);
             }
         });
 
@@ -126,7 +126,7 @@ LoginActivity extends AppCompatActivity implements LoaderCallbacks<Cursor> {
         mSignUpButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-              //  attemptLogin();
+                attemptLogin();
                 Intent i = new Intent(LoginActivity.this, RegisterActivity.class);
                 startActivity(i);
 

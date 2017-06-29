@@ -102,6 +102,8 @@ public class DeviceListFragment extends Fragment {
         adapter.addAll(mDeviceList);
         //mAdapter.setData(mDeviceList);
 
+
+//
 //		adapter.setListener(new DeviceListAdapter.OnPairButtonClickListener() {
 //			@Override
 //			public void onPairButtonClick(int position) {

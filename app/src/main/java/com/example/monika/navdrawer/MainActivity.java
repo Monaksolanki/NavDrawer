@@ -46,7 +46,7 @@ TextView username,emailid;
         HashMap<String,String> user=session.getUserDetails();
         String name=user.get(SessionManager.KEY_NAME);
         String email=user.get(SessionManager.KEY_EMAIL);
-        Toast.makeText(getApplicationContext(),name,Toast.LENGTH_LONG).show();
+        //Toast.makeText(getApplicationContext(),name,Toast.LENGTH_LONG).show();
        // setContentView(R.layout.nav_header_main)
 
 
