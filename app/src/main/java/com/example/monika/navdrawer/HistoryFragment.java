@@ -10,6 +10,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -95,6 +96,17 @@ public class HistoryFragment extends Fragment {
 //        ListView list= (ListView) view.findViewById(R.id.listView);
 //        list.setAdapter(adapter);
         return inflater.inflate(R.layout.fragment_history, container, false);
+    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+    }
+
+    @Override
+    public void onDestroyView(){
+
+        super.onDestroyView();
     }
 
 }

@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="CALCULATE"
-        android:layout_below="@+id/symptons"
+        android:layout_below="@+id/received"
         android:layout_alignRight="@+id/upload"
         android:layout_alignEnd="@+id/upload"
         android:layout_marginTop="50dp"
@@ -24,8 +24,10 @@
         android:layout_alignTop="@+id/received"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="5dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="true"
+        android:enabled="false"
+        android:visibility="invisible" />
 
     <TextView
         android:id="@+id/received"
@@ -35,7 +37,7 @@
         android:text=""
         android:textColor="@android:color/holo_red_dark"
         android:textSize="25sp"
-        android:layout_below="@+id/calc"
+        android:layout_below="@+id/symptons"
         android:layout_centerHorizontal="true" />
 
     <Button

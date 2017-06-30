@@ -163,6 +163,17 @@ public class ProfileFragment extends Fragment {
         adddata.add(pushdata);
     }
 
+    @Override
+    public void onDetach() {
+        super.onDetach();
+
+    }
+
+    @Override
+    public void onDestroyView(){
+
+        super.onDestroyView();
+    }
     private void populateDetails() {
 
 

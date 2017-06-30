@@ -98,29 +98,43 @@ public class DeviceListFragment extends Fragment {
 
 
         final ArrayAdapter adapter = new ArrayAdapter(getContext() ,android.R.layout.simple_list_item_1);
-        //mAdapter		= new DeviceListAdapter(getContext());
+//        mAdapter		= new DeviceListAdapter(getContext());
         adapter.addAll(mDeviceList);
-        //mAdapter.setData(mDeviceList);
+//        mAdapter.setData(mDeviceList);
 
 
 //
-//		adapter.setListener(new DeviceListAdapter.OnPairButtonClickListener() {
+//		mAdapter.setListener(new DeviceListAdapter.OnPairButtonClickListener() {
 //			@Override
 //			public void onPairButtonClick(int position) {
-//				BluetoothDevice device = mDeviceList.get(position);
-//
+//				BluetoothDevice device = (BluetoothDevice) mDeviceList.get(position);
+//                View view = null;
+//                String info = ((TextView) view).getText().toString();
+//                String address = info.substring(info.length() - 17);
 //				if (device.getBondState() == BluetoothDevice.BOND_BONDED) {
 //					unpairDevice(device);
 //				} else {
 //					showToast("Pairing...");
 //
 //					pairDevice(device);
-//				}
+//                    BluetoothFragment bluetoothFragment = new BluetoothFragment();
+//                    FragmentManager manager=getActivity().getSupportFragmentManager();
+//                    Bundle bundle = new Bundle();
+//                    bundle.putString(EXTRA_ADDRESS,address);
+//
+//                    bluetoothFragment.setArguments(bundle);
+//
+//
+//                    manager.beginTransaction().
+//                            // setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out).
+//                                    replace(R.id.relativeLayout_for_fragment,bluetoothFragment,
+//                                    "BluetoothFragment").commit();
+//
+//                }
 //			}
 //		});
 
-        mListView.setAdapter(adapter);
-
+        mListView.setAdapter(mAdapter);
 
         mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
@@ -130,6 +144,9 @@ public class DeviceListFragment extends Fragment {
                 //Toast.makeText(getContext(), " ITEM CLICKED POSITION = "+String.valueOf(0), Toast.LENGTH_SHORT).show();
                 String info = ((TextView) view).getText().toString();
                 String address = info.substring(info.length() - 17);
+
+                BluetoothDevice device = (BluetoothDevice) mDeviceList.get(position);
+
 
 
                 BluetoothFragment bluetoothFragment = new BluetoothFragment();
@@ -153,7 +170,6 @@ public class DeviceListFragment extends Fragment {
                 //startActivity(i);
             }
         });
-
 
 
         getActivity().registerReceiver(mPairReceiver, new IntentFilter(BluetoothDevice.ACTION_BOND_STATE_CHANGED));

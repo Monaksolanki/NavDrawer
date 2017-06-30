@@ -56,7 +56,7 @@
                 android:layout_toRightOf="@+id/birth"
                 android:layout_toEndOf="@+id/birth"
                 android:layout_alignParentEnd="true"
-                android:text="Monika"
+
                 android:enabled="false" />
 
             <TextView
@@ -79,7 +79,6 @@
                 android:layout_alignLeft="@+id/firstname"
                 android:layout_alignStart="@+id/firstname"
                 android:layout_alignParentEnd="true"
-                android:text="Solanki"
                 android:enabled="false" />
 
             <TextView
@@ -102,7 +101,7 @@
                 android:layout_alignLeft="@+id/lastname"
                 android:layout_alignStart="@+id/lastname"
                 android:layout_alignParentEnd="true"
-                android:text="abc@gmail.com"
+
                 android:enabled="false" />
 
             <TextView
@@ -244,7 +243,7 @@
             <EditText
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:inputType="number"
+                android:inputType="text"
                 android:ems="10"
                 android:id="@+id/bloodgroup"
                 android:layout_below="@+id/bg"

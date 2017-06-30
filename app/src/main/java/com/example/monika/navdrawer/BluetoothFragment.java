@@ -12,6 +12,8 @@ import android.os.Handler;
 import android.provider.DocumentsContract;
 import android.support.design.widget.TextInputEditText;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -207,7 +209,15 @@ public class BluetoothFragment extends Fragment {
         final StringRequest pushdata=new StringRequest(Request.Method.GET, url, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
-                Toast.makeText(getContext(),response,Toast.LENGTH_LONG).show();
+                Toast.makeText(getContext(),"Data Uploaded successfully to server",Toast.LENGTH_LONG).show();
+
+                HomeFragment homeFragment=new HomeFragment();
+                FragmentManager manager=getFragmentManager();
+                manager.beginTransaction()
+                        //.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out)
+                        .replace(R.id.relativeLayout_for_fragment,homeFragment,
+                                homeFragment.getTag()).commit();
+
             }
         }, new Response.ErrorListener(){
 
@@ -246,6 +256,16 @@ public class BluetoothFragment extends Fragment {
     public void onDetach() {
         super.onDetach();
         mListener = null;
+    }
+
+    @Override
+    public void onDestroyView(){
+        try {
+            btSocket.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        super.onDestroyView();
     }
 
     /**
@@ -291,6 +311,7 @@ public class BluetoothFragment extends Fragment {
             catch (IOException e)
             {
                 msg("Error");
+
             }
         }
     }
@@ -324,6 +345,7 @@ public class BluetoothFragment extends Fragment {
 
         return super.onOptionsItemSelected(item);
     }
+
 
     private class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
     {
@@ -366,6 +388,12 @@ public class BluetoothFragment extends Fragment {
             {
                 msg("Connection Failed. Is it a SPP Bluetooth? Try again.");
           //      finish();
+//                Fragment frg = null;
+//                frg = getFragmentManager().findFragmentByTag("BluetoothFragment");
+//                final FragmentTransaction ft = getFragmentManager().beginTransaction();
+//                ft.detach(frg);
+//                ft.attach(frg);
+//                ft.commit();
             }
             else
             {

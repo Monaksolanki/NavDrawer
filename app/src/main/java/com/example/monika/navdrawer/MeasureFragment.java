@@ -239,6 +239,8 @@ public class MeasureFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
+
     public void onPause() {
         if (mBluetoothAdapter != null) {
             if (mBluetoothAdapter.isDiscovering()) {

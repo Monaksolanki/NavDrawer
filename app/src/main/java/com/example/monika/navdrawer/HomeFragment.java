@@ -42,7 +42,17 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
         // Required empty public constructor
     }
+    @Override
+    public void onDetach() {
+        super.onDetach();
 
+    }
+
+    @Override
+    public void onDestroyView(){
+
+        super.onDestroyView();
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

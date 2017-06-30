@@ -1,11 +1,13 @@
 package com.example.monika.navdrawer;
 
+import android.app.PendingIntent;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.TaskStackBuilder;
 import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
@@ -77,13 +79,19 @@ TextView username,emailid;
         username.setText(name);
         emailid.setText(email);
 
-
-
+        Intent intent = new Intent();
+        PendingIntent pendingIntent =
+                TaskStackBuilder.create(this)
+                        // add all of DetailsActivity's parents to the stack,
+                        // followed by DetailsActivity itself
+                        .addParentStack(MainActivity.class)
+                        .addNextIntent(intent)
+                        .getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
         HomeFragment HomeFragment=new HomeFragment();
         FragmentManager manager=getSupportFragmentManager();
         manager.beginTransaction().replace(R.id.relativeLayout_for_fragment,HomeFragment,
-                HomeFragment.getTag()).commit();
+                HomeFragment.getTag()).addToBackStack("a").commit();
     }
 
 
@@ -137,7 +145,7 @@ TextView username,emailid;
             manager.beginTransaction().
                    // setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out).
             replace(R.id.relativeLayout_for_fragment,HomeFragment,
-                    HomeFragment.getTag()).commit();
+                    HomeFragment.getTag()).addToBackStack("a").commit();
 
 
         } else if (id == R.id.profile) {
@@ -148,7 +156,7 @@ TextView username,emailid;
             manager.beginTransaction()
                     //.setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out)
                     .replace(R.id.relativeLayout_for_fragment,ProfileFragment,
-                    ProfileFragment.getTag()).commit();
+                    ProfileFragment.getTag()).addToBackStack("a").commit();
         }
 
 
@@ -160,7 +168,7 @@ TextView username,emailid;
             manager.beginTransaction()
                     //setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out)
                     .replace(R.id.relativeLayout_for_fragment,History,
-                    History.getTag()).commit();
+                    History.getTag()).addToBackStack("a").commit();
 
 
         } else if (id == R.id.logout) {
@@ -172,7 +180,7 @@ TextView username,emailid;
             manager.beginTransaction()
                     //setCustomAnimations(R.anim.zoom_in,R.anim.zoom_out)
                     .replace(R.id.relativeLayout_for_fragment,measure,
-                            measure.getTag()).commit();
+                            measure.getTag()).addToBackStack("a").commit();
 
         }
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
